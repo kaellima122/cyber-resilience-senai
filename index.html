@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Segurança Cibernética - SENAI</title>
+    
+    <!-- SDK do Supabase para Banco de Dados -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de progresso (atualizada via JS) -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header>
+        <div class="container">
+            <div class="badge">Atividade Extensionista • 2026</div>
+            <h1>Resiliência Digital</h1>
+            <p class="subtitle">Diagnóstico de Segurança Cibernética focado no Fator Humano e conformidade com a LGPD para o corpo administrativo.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Card de Resultado (Aparece após o envio ao Supabase) -->
+        <div id="result-summary" class="hidden">
+            <div class="result-card">
+                <p>Sua Pontuação Final</p>
+                <div id="score-text">0 / 10</div>
+                <p class="result-note">Obrigado por participar! Suas respostas foram registradas anonimamente e servirão de base para o relatório de impacto do projeto. Confira abaixo a análise técnica de cada situação.</p>
+            </div>
+        </div>
+
+        <!-- Formulário de Perguntas -->
+        <form id="cyberQuiz">
+            <div id="questions-container">
+                <!-- Injetado dinamicamente pelo script.js -->
+            </div>
+            <button type="submit" id="btn-submit">Finalizar Avaliação e Enviar</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Desenvolvido para Gran Faculdade & SENAI</p>
+            <!-- Link discreto para o seu painel de relatórios (opcional) -->
+            <a href="relatorio.html" style="color: #111; font-size: 0.6rem; text-decoration: none; margin-top: 20px; display: block;">Acesso Administrativo</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
