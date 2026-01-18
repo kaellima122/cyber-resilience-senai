@@ -1,220 +1,193 @@
-// 1. DADOS DAS QUESTÕES (Renderiza primeiro para não travar a tela)
+// 1. DADOS DAS QUESTÕES - ADAPTADAS AO GUIA DE RESILIÊNCIA 2026
 const questions = [
     {
-        q: "1️⃣ Engenharia Social por Voz: Você recebe uma ligação no telefone institucional. A pessoa se identifica como seu gestor imediato, utiliza termos internos corretos e demonstra urgência: 'Estou em reunião externa e meu acesso ao sistema foi bloqueado. Um código chegou no seu SMS porque você está como responsável substituto. Preciso desse código agora para liberar um processo.' Como você procede?",
+        q: "1️⃣ Cadastro Mestre (Master Data): Você percebe que um código de produto crítico está com a descrição errada no sistema, o que pode parar a linha de produção. Qual a atitude correta segundo o guia?",
         options: [
-            "Informo o código, pois o pedido envolve um processo real e o contato parece legítimo.",
-            "Solicito que o gestor confirme a solicitação por mensagem no e-mail institucional.",
-            "Encerro a ligação e retorno utilizando o ramal interno ou canal corporativo registrado.",
-            "Informo apenas parte do código para confirmar a identidade."
+            "Corrigir imediatamente, pois a agilidade é prioridade.",
+            "Criar uma planilha paralela com o dado correto e avisar a equipe por e-mail.",
+            "Consultar o procedimento oficial e, se necessário, solicitar dupla verificação antes de alterar.",
+            "Ignorar, pois é responsabilidade exclusiva da TI."
         ],
-        correct: 2,
-        analysis: "Análise de Segurança do Cenário: As opções 1, 2 e 4 representam engenharia social por voz (vishing). Mesmo canais institucionais podem ser comprometidos. A única medida segura é quebrar o canal inicial e validar por contato previamente registrado."
+        correct: 2, // Índice da resposta certa (0, 1, 2, 3)
+        analysis: "Resiliência Operacional: Dados mestres são a 'fonte da verdade'. Alterações sem procedimento geram erros em cadeia. A regra é: na dúvida, consulte e valide."
     },
     {
-        q: "2️⃣ Uso de IA com Dados Reais: Para agilizar um relatório, você insere em uma IA gratuita dados reais de alunos/colaboradores, utilizando modo anônimo, VPN ativa e instruções explícitas para não armazenamento. Essa prática é segura?",
+        q: "2️⃣ Shadow IT (A Armadilha do Atalho): O sistema oficial está lento. Para entregar o relatório no prazo, você decide usar uma ferramenta online gratuita de conversão de arquivos que não é homologada. Qual o risco?",
         options: [
-            "Sim, pois medidas técnicas adicionais reduzem o risco.",
-            "Sim, desde que não haja identificação direta como CPF ou matrícula.",
-            "Não, pois houve transferência de dados para ambiente externo à instituição.",
-            "Sim, se os dados forem usados apenas para formatação."
-        ],
-        correct: 2,
-        analysis: "Análise de Segurança do Cenário: As opções 1, 2 e 4 são erros comuns de interpretação técnica da LGPD. O simples envio de dados pessoais para terceiros já caracteriza risco jurídico e de segurança, independentemente de anonimato parcial ou intenção."
-    },
-    {
-        q: "3️⃣ Alteração de PIX: Um fornecedor envia e-mail informando alteração da chave PIX, com nota fiscal válida, CNPJ correto e histórico de conversas preservado. Qual ação é mais segura?",
-        options: [
-            "Validar apenas o CNPJ e efetuar o pagamento.",
-            "Responder o e-mail solicitando confirmação formal.",
-            "Confirmar a alteração por telefone usando contato já cadastrado no sistema.",
-            "Solicitar autorização do gestor antes de pagar."
-        ],
-        correct: 2,
-        analysis: "Análise de Segurança do Cenário: As opções 1, 2 e 4 ainda mantêm o contato no canal possivelmente comprometido. Este cenário caracteriza Business Email Compromise (BEC) avançado."
-    },
-    {
-        q: "4️⃣ Acesso Físico: Um técnico uniformizado informa que precisa verificar o modem. Ele apresenta crachá, conhece o layout do setor e cita um chamado antigo. Como você age?",
-        options: [
-            "Permite o acesso, pois há indícios de legitimidade.",
-            "Confirma a visita com a TI antes de autorizar qualquer intervenção.",
-            "Acompanha o técnico durante todo o procedimento.",
-            "Solicita documentação e libera o acesso."
+            "Nenhum, se a ferramenta for famosa.",
+            "Você cria um Ponto Único de Falha e expõe dados da empresa sem contrato de confidencialidade.",
+            "O risco é baixo se você apagar o arquivo depois.",
+            "É uma atitude proativa que demonstra eficiência."
         ],
         correct: 1,
-        analysis: "Análise de Segurança do Cenário: As opções 1, 3 e 4 ignoram riscos de invasão física planejada. A validação formal com a TI é obrigatória, independentemente da aparência de legitimidade."
+        analysis: "Segurança: Ferramentas não oficiais (Shadow IT) não têm garantia de segurança, backup ou suporte. Se a ferramenta vazar os dados, a responsabilidade é sua."
     },
     {
-        q: "5️⃣ Pendrive Encontrado: Você encontra um pendrive USB no setor administrativo, identificado como 'Folha de Pagamento – Confidencial'. Qual atitude apresenta menor risco?",
+        q: "3️⃣ Golpe da Fatura (BEC 4.0): Um fornecedor antigo envia um e-mail com o logotipo correto informando que o boleto vence hoje, mas houve um erro no banco e ele precisa que o pagamento seja feito via um novo PIX urgente. O que fazer?",
         options: [
-            "Conectar o pendrive ao computador para identificar o proprietário.",
-            "Conectar em um computador isolado da rede apenas para ver o conteúdo.",
-            "Entregar o pendrive diretamente ao setor de TI sem conectá-lo a nenhum equipamento.",
-            "Guardar o pendrive para devolução posterior."
+            "Pagar imediatamente para evitar juros e multas.",
+            "Responder o e-mail perguntando se é verdade.",
+            "Interromper o pagamento e confirmar por telefone oficial (não o do e-mail) com o fornecedor.",
+            "Verificar se o logotipo do e-mail é idêntico ao original e pagar."
         ],
         correct: 2,
-        analysis: "Análise de Segurança do Cenário: As opções 1 e 2 são erros técnicos graves. Pendrives maliciosos (BadUSB) executam comandos automaticamente, mesmo sem abrir arquivos. Não conectar o dispositivo é a única conduta segura."
+        analysis: "Ameaça Externa: E-mails de parceiros podem ser invadidos. A urgência e a troca de canal de pagamento são os maiores sinais de fraude (BEC)."
     },
     {
-        q: "6️⃣ Extensão de Navegador: Uma extensão gratuita para PDF solicita permissão para 'ler e alterar dados em todos os sites', alegando necessidade para funcionamento. Qual o principal risco?",
+        q: "4️⃣ Uso de IA (Shadow AI): Você precisa resumir um contrato confidencial de parceria estratégica. Qual a forma segura de usar IAs públicas (como ChatGPT)?",
         options: [
-            "Acesso aos arquivos PDF apenas.",
-            "Captura de cookies de sessão e acessos a sistemas institucionais.",
-            "Lentidão no navegador.",
-            "Exposição apenas do histórico de navegação."
-        ],
-        correct: 1,
-        analysis: "Análise de Segurança do Cenário: Essa permissão permite sequestro de sessão (session hijacking), possibilitando acesso a sistemas sem necessidade de senha."
-    },
-    {
-        q: "7️⃣ Engenharia Social: Um aluno solicita por telefone a confirmação de dados, alegando urgência e prejuízo acadêmico. Qual atitude é correta?",
-        options: [
-            "Confirmar apenas informações genéricas.",
-            "Validar identidade com perguntas básicas.",
-            "Orientar o canal oficial de atendimento, sem confirmar dados.",
-            "Solicitar comprovação por e-mail."
+            "Colar o texto inteiro, pois a IA ajuda na produtividade.",
+            "Colar apenas as cláusulas financeiras.",
+            "Anonimizar os dados (remover nomes, valores e empresas) antes de inserir, ou não usar.",
+            "Usar o modo anônimo do navegador."
         ],
         correct: 2,
-        analysis: "Análise de Segurança do Cenário: Mesmo confirmações parciais podem caracterizar vazamento de dados pessoais."
+        analysis: "Proteção de Dados: IAs públicas aprendem com o que você digita. Dados confidenciais inseridos lá podem vazar para concorrentes via 'engenharia de prompts'."
     },
     {
-        q: "8️⃣ Phishing com HTTPS: Você recebe link para troca de senha em site idêntico ao oficial, com HTTPS válido. O que isso indica?",
+        q: "5️⃣ Engenharia Social Física (BadUSB): Um visitante simpático pede para carregar o celular na porta USB do seu computador corporativo enquanto aguarda uma reunião. Como proceder?",
         options: [
-            "O site é seguro.",
-            "A comunicação é criptografada, mas o site pode ser falso.",
-            "A TI validou o link.",
-            "Não há risco se o layout for idêntico."
+            "Permitir, é uma gentileza básica e não há transferência de arquivos.",
+            "Emprestar seu carregador de parede, mas negar a conexão no PC (Política USB Zero).",
+            "Permitir apenas se ele desbloquear o celular na sua frente.",
+            "Conectar, mas ficar de olho na tela."
         ],
         correct: 1,
-        analysis: "Análise de Segurança do Cenário: HTTPS garante criptografia, não legitimidade."
+        analysis: "Defesa Física: Cabos e dispositivos podem conter chips maliciosos (BadUSB) que instalam vírus ou assumem controle do PC em segundos. Nunca conecte dispositivos desconhecidos."
     },
     {
-        q: "9️⃣ Senhas no Navegador: Senhas administrativas são salvas no navegador. Qual ameaça é mais relevante?",
+        q: "6️⃣ Quishing (QR Code): Chega uma encomenda com um QR Code na etiqueta dizendo 'Escaneie para rastrear a entrega em tempo real'. Ao escanear, pede login do seu e-mail corporativo.",
         options: [
-            "Acesso físico de terceiros.",
-            "Malware do tipo infostealer.",
-            "Perda de cache.",
-            "Falha de sincronização."
+            "Logar rapidamente para ver onde está a carga.",
+            "Verificar se o site tem o cadeado (HTTPS) e logar.",
+            "Não logar. QR Codes podem levar a sites falsos que roubam a sessão ativa (Token).",
+            "Usar o celular pessoal para logar na conta da empresa."
         ],
-        correct: 1,
-        analysis: "Análise de Segurança do Cenário: Infostealers são projetados especificamente para extrair credenciais salvas localmente."
+        correct: 2,
+        analysis: "Ameaça Moderna: O Quishing leva a sites falsos que roubam credenciais e cookies de sessão, burlando até a autenticação de dois fatores."
     },
     {
-        q: "🔟 QR Code Malicioso: Um QR Code administrativo solicita permissão para notificações no celular. Qual risco está associado?",
+        q: "7️⃣ Notificação de Sistema (Omissão): Aparece um alerta no seu PC: 'Licença de software expira em 2 dias'. Você não é da TI. O que faz?",
         options: [
-            "Spam visual.",
-            "Interceptação de códigos de autenticação exibidos em notificações.",
-            "Lentidão do dispositivo.",
-            "Nenhum risco relevante."
+            "Fecha a janela e continua trabalhando.",
+            "Espera expirar para ver se para de funcionar.",
+            "Reporta proativamente à TI via chamado ou e-mail.",
+            "Tenta procurar um 'crack' na internet para resolver."
         ],
-        correct: 1,
-        analysis: "Análise de Segurança do Cenário: A permissão pode permitir captura indireta de códigos 2FA, comprometendo contas."
+        correct: 2,
+        analysis: "Cultura do Reporte: Ignorar alertas leva a paradas operacionais. Você é o sensor da empresa; reportar evita falhas catastróficas."
+    },
+    {
+        q: "8️⃣ Compartilhamento de Senha: Um colega do seu time precisa urgente enviar um arquivo, mas o computador dele travou. Ele pede sua senha para logar rápido na sua máquina e enviar. Você:",
+        options: [
+            "Passa a senha, pois o trabalho em equipe é prioridade.",
+            "Digita a senha para ele, mas não conta qual é.",
+            "Nega. Credenciais são intransferíveis (Princípio do Não-Repúdio).",
+            "Empresta, mas troca a senha no dia seguinte."
+        ],
+        correct: 2,
+        analysis: "Identidade: Sua senha é sua assinatura jurídica. Se o colega cometer um erro ou fraude usando sua conta, o sistema registrará que foi VOCÊ."
+    },
+    {
+        q: "9️⃣ Arquivo Executável: Chega um currículo por e-mail com o nome 'Curriculo_Analista_2026.pdf.exe'. O ícone parece um PDF.",
+        options: [
+            "Abre para conferir o candidato.",
+            "Renomeia para tirar o .exe e abre.",
+            "Deleta imediatamente e reporta. Extensão dupla é sinal claro de vírus.",
+            "Encaminha para o RH avaliar."
+        ],
+        correct: 2,
+        analysis: "Ransomware: Arquivos .exe, .scr, .bat são programas, não documentos. Abrir isso pode criptografar toda a rede da empresa."
+    },
+    {
+        q: "🔟 Deepfake (Autoridade Artificial): Você recebe um áudio no WhatsApp do Diretor pedindo uma transferência urgente para um fornecedor novo. A voz é idêntica.",
+        options: [
+            "Faz a transferência pela urgência do cargo.",
+            "Desconfia, mas faz um valor menor para testar.",
+            "Tenta ligar de volta para o número oficial ou valida com outro gestor. A voz pode ser clonada por IA.",
+            "Manda uma mensagem de texto perguntando 'é você mesmo?'."
+        ],
+        correct: 2,
+        analysis: "Futuro 2026: A autoridade não é apenas a voz, é o processo. Nenhuma urgência justifica quebrar processos de segurança financeira. Valide a origem."
     }
 ];
 
-// 2. RENDERIZAÇÃO DAS PERGUNTAS (Executa assim que o script carrega)
+// 2. RENDERIZAÇÃO DAS PERGUNTAS
 const container = document.getElementById('questions-container');
 if (container) {
     questions.forEach((item, index) => {
         const qDiv = document.createElement('div');
         qDiv.className = "question-block";
         qDiv.innerHTML = `
-            <span class="question-text">${item.q}</span>
+            <div class="q-header">
+                <span class="q-number">Questão ${index + 1}</span>
+                <span class="q-text">${item.q}</span>
+            </div>
             <div class="options-group">
                 ${item.options.map((opt, i) => `
                     <label class="option-label" id="label-q${index}-opt${i}">
                         <input type="radio" name="q${index}" value="${i}" required>
-                        <span>${opt}</span>
+                        <span class="opt-text">${opt}</span>
                     </label>
                 `).join('')}
             </div>
-            <div id="feedback-${index}" class="trap-feedback">
-                <p id="eval-${index}" class="font-bold mb-2"></p>
-                <p class="text-slate-400" style="font-size: 0.9rem;">${item.analysis}</p>
+            <div id="feedback-${index}" class="trap-feedback" style="display:none;">
+                <p id="eval-${index}" class="eval-text"></p>
+                <p class="analysis-text"><strong>Análise:</strong> ${item.analysis}</p>
             </div>
         `;
         container.appendChild(qDiv);
     });
 }
 
-// 3. BARRA DE PROGRESSO
-const progressBar = document.getElementById('progressBar');
-window.addEventListener('scroll', () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    if (progressBar) progressBar.style.width = scrolled + "%";
-});
-
-// 4. CONFIGURAÇÃO DO SUPABASE
-// Certifique-se de colocar as suas chaves reais aqui ou deixar como string vazia ""
-const SB_URL = "https://csukybsuavifpmbyaded.supabase.co"; 
-const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzdWt5YnN1YXZpZnBtYnlhZGVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgwODYwMDksImV4cCI6MjA4MzY2MjAwOX0.2CmjaWfse4fetYBUl824vdcEqSlt8yIvBg61z4Urpqs";
-let _supabase = null;
-
-try {
-    if (SB_URL && SB_URL !== "SUA_URL_AQUI") {
-        _supabase = supabase.createClient(SB_URL, SB_KEY);
-    }
-} catch (e) {
-    console.error("Erro ao conectar no Supabase:", e);
-}
-
-// 5. LÓGICA DE SUBMISSÃO
+// 3. LÓGICA DE SUBMISSÃO
 const form = document.getElementById('cyberQuiz');
-let deviceId = localStorage.getItem('senai_id_v2026') || 'DEV-' + Math.random().toString(36).substr(2, 7).toUpperCase();
-localStorage.setItem('senai_id_v2026', deviceId);
+if(form){
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        let score = 0;
+        const submitBtn = document.getElementById('btn-submit');
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Calculando...";
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let score = 0;
-    let errorsList = [];
-    const formData = new FormData(form);
-    const submitBtn = document.getElementById('btn-submit');
-
-    submitBtn.innerText = "Processando...";
-    submitBtn.disabled = true;
-
-    questions.forEach((item, index) => {
-        const answer = formData.get(`q${index}`);
-        const feedbackDiv = document.getElementById(`feedback-${index}`);
-        const evalP = document.getElementById(`eval-${index}`);
-        const selectedLabel = document.getElementById(`label-q${index}-opt${answer}`);
-        const correctLabel = document.getElementById(`label-q${index}-opt${item.correct}`);
-        
-        const isCorrect = parseInt(answer) === item.correct;
-        
-        if (isCorrect) {
-            score++;
-            evalP.innerHTML = "✅ Resposta correta";
-            evalP.style.color = "var(--success)";
-            if (selectedLabel) selectedLabel.style.borderColor = "var(--success)";
-        } else {
-            errorsList.push(`Q${index + 1}`);
-            evalP.innerHTML = "❌ Resposta incorreta";
-            evalP.style.color = "var(--error)";
-            if (selectedLabel) selectedLabel.style.borderColor = "var(--error)";
-            if (correctLabel) {
-                correctLabel.style.borderColor = "var(--success)";
-                correctLabel.style.borderStyle = "dashed";
+        questions.forEach((item, index) => {
+            const formData = new FormData(form);
+            const answer = formData.get(`q${index}`);
+            const feedbackDiv = document.getElementById(`feedback-${index}`);
+            const evalP = document.getElementById(`eval-${index}`);
+            const selectedLabel = document.getElementById(`label-q${index}-opt${answer}`);
+            const correctLabel = document.getElementById(`label-q${index}-opt${item.correct}`);
+            
+            // Lógica de Correção
+            if (parseInt(answer) === item.correct) {
+                score++;
+                evalP.innerHTML = "✅ Resposta Correta!";
+                evalP.className = "eval-text success";
+                if (selectedLabel) selectedLabel.classList.add('correct-choice');
+            } else {
+                evalP.innerHTML = "❌ Resposta Incorreta";
+                evalP.className = "eval-text error";
+                if (selectedLabel) selectedLabel.classList.add('wrong-choice');
+                if (correctLabel) correctLabel.classList.add('correct-choice-highlight');
             }
-        }
-        feedbackDiv.style.display = 'block'; 
+            feedbackDiv.style.display = 'block'; 
+        });
+
+        // Mostra Resultado
+        const resultSummary = document.getElementById('result-summary');
+        const scoreText = document.getElementById('score-text');
+        const msgFinal = document.getElementById('msg-final');
+        
+        resultSummary.style.display = 'block';
+        scoreText.innerText = `${score} / ${questions.length}`;
+        
+        if(score >= 8) msgFinal.innerText = "Excelente! Você é um pilar de resiliência.";
+        else if(score >= 5) msgFinal.innerText = "Bom, mas fique atento aos detalhes.";
+        else msgFinal.innerText = "Atenção! Revise o guia para proteger sua carreira.";
+
+        submitBtn.style.display = 'none';
+        
+        // Rola para o topo do resultado
+        resultSummary.scrollIntoView({ behavior: 'smooth' });
     });
-
-    // Tenta enviar para o Supabase (se estiver configurado)
-    if (_supabase) {
-        try {
-            await _supabase.from('quiz_logs').insert([
-                { device_id: deviceId, score: score, errors: errorsList.join(", ") || "Nenhum" }
-            ]);
-        } catch (err) {
-            console.error("Falha ao salvar no banco:", err);
-        }
-    }
-
-    document.getElementById('result-summary').classList.remove('hidden');
-    document.getElementById('score-text').innerText = `${score} / ${questions.length}`;
-    submitBtn.style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+}
